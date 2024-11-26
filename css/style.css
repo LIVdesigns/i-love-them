@@ -1,0 +1,136 @@
+/* General body styling */
+body {
+    margin: 0;
+    background-color: black;
+    color: azure;
+    display: flex;
+    justify-content: center;  /* Centers content horizontally */
+    align-items: center;      /* Centers content vertically */
+    height: 100vh;            /* Makes the body take the full height of the viewport */
+    text-align: center;       /* Ensures text is centered */
+}
+
+/* Banner container */
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+/* Title styling */
+.banner .content .title {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 6em;
+}
+
+/* Banner background styling */
+.banner::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('../images/amor.jpeg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+
+    mask-image: url(../images/ink.gif);
+    mask-size: cover;
+    mask-position: center;
+}
+
+/* Buttons container */
+.buttons {
+    margin-top: 30px;
+}
+
+/* Shared button styles */
+.button {
+    margin: 20px 40px;
+    position: relative;
+    display: inline-block;
+    padding: 25px 30px;
+    color: paleturquoise;
+    font-size: 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.5s;
+    letter-spacing: 4px;    
+}
+
+.button:hover {
+    background: #000000;
+    color:#ffffff;
+    box-shadow: 0 0 5px #c62323,
+                0 0 25px  #c62323,
+                0 0 50px  #c62323,
+                0 0 200px  #c62323;
+}
+
+/* QUIZ QUESTIONS */
+
+/* Quiz container */
+#game-container {
+    width: 90%;
+    max-width: 800px;
+    height: 60vh;
+    text-align: center;
+    background: #1e1e1e;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+#question-text {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#choices-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Shared button styles */
+button {
+    background: transparent; /* No background for buttons */
+    color: paleturquoise;
+    border: none;  /* No border */
+    font-size: 1.5em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 20px;
+    position: relative; /* To position the dot */
+    display: inline-flex; /* To align button text and dot */
+    align-items: center; /* Center the text and the dot vertically */
+    gap: 10px; /* Space between text and dot */
+}
+
+/* Dot on the side of the button */
+button::after {
+    content: ''; /* Empty content for the dot */
+    width: 12px;  /* Dot size */
+    height: 12px;
+    background-color: transparent; /* Initial dot color */
+    border-radius: 50%;  /* Circle shape */
+    border: 2px solid paleturquoise; /* Border color of the dot */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition for dot color */
+}
+
+/* Hover effect on buttons */
+button:hover {
+    color: #ffffff;
+}
+
+/* Change dot color when button is clicked */
+button.clicked::after {
+    background-color: paleturquoise;  /* Dot fills with color */
+    border-color: #ffffff;  /* Border color changes to white when clicked */
+}
+
+button:disabled {
+    color: #555;
+    cursor: not-allowed;
+}
