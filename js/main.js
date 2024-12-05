@@ -166,7 +166,7 @@ function loadLastQuestion() {
         document.body.appendChild(fadeToBlack);
 
         setTimeout(() => {
-            window.location.href = "endPage.html"; // Navigate after fade effect
+            window.location.href = "endpage.html"; // Navigate after fade effect
         }, 3000); // Delay for fade effect
     };
 
