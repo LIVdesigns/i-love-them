@@ -1,7 +1,7 @@
 const questions = [
     { 
         text: "I feel happy with my current relationship.", 
-        options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"], 
+        options: ["couldn't be happier", "Agree", "it's alright", "we're going through a rough stage at the moment", "There is something wrong between us"], 
     },
     { 
         text: "My partner and I communicate openly and well.", 
@@ -13,51 +13,45 @@ const questions = [
     },
     { 
         text: "I can feel uneasy when my partner does not respond to me quickly.", 
-        options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"], 
+        options: ["They're busy all the time", "they respond to me when they can", "they always give me an excuse", "it annoys me", "I then wonder and track them down"], 
     },
     { 
         text: "I trust my partner completely.", 
         options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"], 
     },
+
     { 
-        text: "are you sure?", 
-        options: ["yes","no"], 
-    },
-    { 
-        text: "I notice when my partner seems distracted or distant.", 
-        options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"], 
+        text: "On a scale from 1-10, how often does your partner get distracted or distant?", 
+        options: ["0-2", "3-5", "6-8", "9-10"], 
     },
     { 
         text: "I sometimes wonder if my partner truly appreciates everything I do for them.", 
-        options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"], 
+        options: ["They love me. They appreciate me. I know it.", "They do nice things for me...here and there", "They don't show it often but they do", "sometimes", "They don't show vulnerability at all"], 
     },
-    { 
-        text: "Are you sure you are not overthinking this?", 
-        options: ["i am sure", "i am very sure", "just move on..."], 
-    },
+    
     { 
         text: "I sometimes feel like I need to guide my partner's decisions for their own good.", 
-        options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"], 
+        options: ["I made all the decisions", "they're perfectly fine", "they're indecisive. so I have to step in", "they don't know any better", "they can't decide for their own good"], 
     },
     { 
         text: "I can ask my partner for details about their plans or who they're spending time with.", 
-        options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"], 
+        options: ["they tell me the truth", "Agree and always. i trust them", "Neutral", "defintely about who they're spending time with", "I always need to know"], 
     },
     { 
         text: "I have imagined scenarios where my partner might meet someone better than me.", 
-        options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"], 
+        options: ["they could never", "no one will love them like i can", "occasionally", "never, they love me", "i'm too good for them"], 
     },
     { 
         text: "I sometimes feel like I know my partner better than they know themselves.", 
-        options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"], 
+        options: ["they couldn't find themselves at first until me", "I feel the other way around", "we know each other deeply and equally... i think"], 
     },
     { 
         text: "I believe my partner would struggle without me.", 
-        options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"], 
+        options: ["I've helped through the rough times", "they wouldn't know what to do", "they can handle their own", "yes definitely"], 
     },
     { 
-        text: "I have altered aspects of my behavior or appearance to ensure my partner stays interested.", 
-        options: ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"], 
+        text: "Do you need to know where your partner is all the time to feel secured?", 
+        options: ["yes", "i trust them enough", "sometimes", "it helps me", "they're hiding something"], 
     },
     { 
         text: "I sometimes feel like my partner owes me loyalty because of how much I've done for them.", 
@@ -145,40 +139,45 @@ function loadLastQuestion() {
     choicesContainer.innerHTML = "";
     nextButton.style.display = "none";
 
-    // Display the final statement and the following text
+    // Display the final statement
     const finalStatementContainer = document.getElementById("final-statement-container");
     const finalStatementText = document.getElementById("final-statement-text");
 
     finalStatementContainer.classList.remove("hidden");
 
     finalStatementText.textContent = "I sometimes feel like my partner owes me loyalty because of how much I've done for them.";
-    
-    // Fade in the final statement text
+
+    // Fade in the final statement
     finalStatementText.style.opacity = "0";
     setTimeout(() => {
         finalStatementText.style.transition = "opacity 2s ease-in";
         finalStatementText.style.opacity = "1";
-    }, 500); // 500ms delay before fade-in begins
+    }, 500); // Start fade-in after 500ms
 
-    // Then, fade in the following text after a delay
-    setTimeout(() => {
-        const followingText = "This feeling may stem from a sense of imbalance in the relationship.";
-        finalStatementText.textContent = followingText;
-        finalStatementText.style.transition = "opacity 2s ease-in";
-        finalStatementText.style.opacity = "1";
-    }, 4000); // 4-second delay before the following text appears
+    // Show the "Continue" button after the final statement fades in
+    const continueButton = document.createElement("button");
+    continueButton.textContent = "Continue";
+    continueButton.classList.add("button");
 
-    // Fade to black after 7 seconds and then navigate to the next page
-    setTimeout(() => {
-        // Apply fade to black effect
-        gameContainer.style.transition = "background-color 2s ease-in";
-        gameContainer.style.backgroundColor = "black";
-        
-        // After the fade, navigate to the end page
+    continueButton.onclick = () => {
+        // Fade to black effect before navigating
+        const fadeToBlack = document.createElement("div");
+        fadeToBlack.className = "fade-to-black active";
+        document.body.appendChild(fadeToBlack);
+
         setTimeout(() => {
-            window.location.href = "endPage.html";
-        }, 2000); // Delay for fade effect before navigating
-    }, 7000); // 7-second delay before fade to black
+            window.location.href = "endPage.html"; // Navigate after fade effect
+        }, 3000); // Delay for fade effect
+    };
+
+    setTimeout(() => {
+        choicesContainer.appendChild(continueButton); // Show button
+        continueButton.style.opacity = "0";
+        setTimeout(() => {
+            continueButton.style.transition = "opacity 2s ease-in";
+            continueButton.style.opacity = "1";
+        }, 500); // Fade-in effect for button
+    }, 3000); // Delay to show button after final statement
 }
 
 let gameEnded = false;  // Flag to prevent multiple game endings
@@ -288,4 +287,34 @@ setTimeout(() => {
 window.addEventListener('click', () => {
     document.getElementById("intro").play();
 
+});
+
+
+// Function to play sound
+function playEndSound() {
+    // Play the sound when the "Continue" button is clicked
+    const endSound = document.getElementById('endSound');
+    if (endSound) {
+        endSound.play();
+    } else {
+        console.error("Audio element with ID 'endSound' not found.");
+    }
+}
+
+document.getElementById('returnToHomeButton').addEventListener('click', function (event) {
+    const endSound = document.getElementById('endSound');
+    if (endSound) {
+        // Prevent the button's default action temporarily
+        event.preventDefault();
+        
+        // Play the sound
+        endSound.play();
+        
+        // Navigate after the sound finishes playing
+        endSound.onended = function () {
+            window.location.href = '/home'; // Replace '/home' with your actual home URL
+        };
+    } else {
+        console.error("Audio element with ID 'endSound' not found.");
+    }
 });

@@ -184,14 +184,13 @@ button:disabled {
     background-color: black;
     opacity: 0;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
     font-size: 2em;
     text-align: center;
-    z-index: 1000; /* Ensure it appears above everything else */
-    transition: opacity 3s ease-in; /* Slow fade effect for the background */
+    z-index: 9999; /* Ensure it overlays everything */
+    transition: opacity 3s ease-in-out;
 }
 
 /* Fully opaque state */
@@ -218,7 +217,7 @@ button:disabled {
 }
 
 #final-statement-container {
-    display: flex;
+    display: inline-block;
     justify-content: center;
     align-items: center;
     height: 100vh; /* Full viewport height */

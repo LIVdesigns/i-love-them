@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <audio id="ending-audio" src="assets/ending.mp3" preload="auto"></audio>
+
+    <audio id="endSound" src="assets/ending.mp3"></audio>
 
 </head>
 <body>
@@ -15,14 +16,7 @@
         <!-- Return to Home Button -->
         <a href="index.html" class="button" id="return-to-home-btn">Return to Home</a>
     </div>
-
-    <script>
-        // Wait for the page to load before playing the audio
-        window.onload = function() {
-            var audio = document.getElementById('ending-audio');
-            audio.play(); // Play the audio when the page loads
-        };
-    </script>
+    
     
 
     <script src="js/main.js"></script>
