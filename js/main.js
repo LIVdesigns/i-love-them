@@ -279,7 +279,7 @@ setTimeout(() => {
     
     // After the fade, navigate to the end page
     setTimeout(() => {
-        window.location.href = "endPage.html"; 
+        window.location.href = "endpage.html"; 
     }, 2000); 
 }, 7000); 
 
