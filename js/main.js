@@ -1,7 +1,7 @@
 const questions = [
     { 
         text: "I feel happy with my current relationship.", 
-        options: ["couldn't be happier", "Agree", "it's alright", "we're going through a rough stage at the moment", "There is something wrong between us"], 
+        options: ["couldn't be happier", "Agree", "it's alright", "we're going through a rough stage at the moment", "There is something wrong between"], 
     },
     { 
         text: "My partner and I communicate openly and well.", 
